@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.springboot.spring.learningspring.enterprise.MyWebController;
+
 @SpringBootApplication
 public class LearningspringApplication {
 
@@ -20,6 +22,9 @@ public class LearningspringApplication {
 
 		GameRunner runner = context.getBean(GameRunner.class);
 		runner.run();
+
+		MyWebController controller = context.getBean(MyWebController.class);
+		System.out.println(controller.returnValueFromBusinessService());
 	}
 
 }
