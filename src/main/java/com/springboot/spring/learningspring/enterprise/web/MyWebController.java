@@ -1,14 +1,14 @@
 package com.springboot.spring.learningspring.enterprise.web;
 
-import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import com.springboot.spring.learningspring.enterprise.business.BusinessService;
-
+ 
 @Component
+@ComponentScan("com.springboot.spring.learningspring.enterprise.business")
 public class MyWebController {
 
     @Autowired

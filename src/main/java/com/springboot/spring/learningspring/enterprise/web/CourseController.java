@@ -1,12 +1,16 @@
-package com.springboot.spring.learningspring;
+package com.springboot.spring.learningspring.enterprise.web;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.spring.learningspring.enterprise.data.Course;
+ 
 @RestController
+@Component
 public class CourseController {
 
     @RequestMapping("/courses")

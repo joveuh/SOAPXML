@@ -1,4 +1,4 @@
-package com.springboot.spring.learningspring;
+package com.springboot.spring.learningspring.enterprise.data.games;
 
 public interface GamingConsole {
     
