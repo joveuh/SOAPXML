@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GetCourseDetailsResponse xmlns="http://localhost:8090/courses">
+
+    <CourseDetails>
+        <id>123</id>
+        <name>Biology</name>
+        <author>Sample author description</author>
+    </CourseDetails>
+
+</GetCourseDetailsResponse>
