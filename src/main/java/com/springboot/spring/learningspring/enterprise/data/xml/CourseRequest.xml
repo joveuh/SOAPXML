@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GetCourseDetailsRequest xmlns="http://localhost:8090/course" xsi:schemaLocation="http://localhost:8090/course course-details.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<GetCourseDetailsRequest xmlns="http://localhost:8090/courses" xsi:schemaLocation="http://localhost:8090/courses course-details.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <id>123</id>
-    <name>Biooo</name>
-    <author>uzair</author>
 </GetCourseDetailsRequest>
