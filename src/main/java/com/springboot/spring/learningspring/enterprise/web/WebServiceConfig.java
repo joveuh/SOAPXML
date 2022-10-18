@@ -35,10 +35,11 @@ public class WebServiceConfig {
     // /ws/coures.wsdl
     // course-details.xsd
 
-    @Bean(name="courses")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema coursesSchema){
+    // Browse to http://localhost:8090/ws/courses.wsdl
+    @Bean(name = "courses")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema coursesSchema) {
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
-        //coursesSchema = coursesSchema();
+        // coursesSchema = coursesSchema();
         definition.setPortTypeName("CoursePort");
         definition.setTargetNamespace("http://localhost:8090/courses");
         definition.setLocationUri("/ws");
@@ -46,16 +47,17 @@ public class WebServiceConfig {
 
         // PortType - CoursePort
         // NameSpace - http://localhost:8090/courses
-        // schema 
+        // schema
 
         return definition;
     }
 
-
-
+    // Having the .xsd file under src/main/java works .. The new ClassPathResource
+    // seems to be eating the the first backslash '/' in the Path whether relative
+    // or absolute. Having it in xml/ works too since xml is nested in src/main/java
     @Bean
-    public XsdSchema coursesSchema(){
-       return new SimpleXsdSchema(new ClassPathResource("course-details.xsd"));
+    public XsdSchema coursesSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("xml/course-details.xsd"));
     }
 
 }

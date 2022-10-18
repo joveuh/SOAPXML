@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.spring.learningspring.enterprise.data.Course;
+import com.springboot.spring.learningspring.enterprise.data.courses.Course;
+
  
 @RestController
 @Component

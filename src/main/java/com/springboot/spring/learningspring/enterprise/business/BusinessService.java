@@ -17,6 +17,7 @@ public class BusinessService {
 
     public long calculateSum(){
         List<Integer> data = dataService.getData();
+        System.out.println("\n-----------------------------\nBelow is output from BusinessService bean.\n");
         return data.stream().reduce(Integer::sum).get();
     }
 }

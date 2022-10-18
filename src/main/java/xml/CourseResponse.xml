@@ -7,7 +7,7 @@ xsi:schemaLocation="http://localhost:8090/courses course-details.xsd">
     <CourseDetails>
         <id>123</id>
         <name>Biology</name>
-        <author>Sample author description</author>
+        <description>Sample description</description>
     </CourseDetails>
 
 </GetAllCourseDetailsResponse>
