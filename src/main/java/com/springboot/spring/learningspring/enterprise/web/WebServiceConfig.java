@@ -13,7 +13,6 @@ import org.springframework.xml.xsd.XsdSchema;
 
 // Enable Spring Web Services
 @EnableWs
-
 // Spring Configuration
 @Configuration
 public class WebServiceConfig {
@@ -37,8 +36,9 @@ public class WebServiceConfig {
     // course-details.xsd
 
     @Bean(name="courses")
-    public DefaultWsdl11Definition defaultWsdl11Definition(SimpleXsdSchema coursesSchema){
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema coursesSchema){
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
+        //coursesSchema = coursesSchema();
         definition.setPortTypeName("CoursePort");
         definition.setTargetNamespace("http://localhost:8090/courses");
         definition.setLocationUri("/ws");
@@ -54,8 +54,8 @@ public class WebServiceConfig {
 
 
     @Bean
-    XsdSchema coursesSchema(){
-       return new SimpleXsdSchema(new ClassPathResource("/Users/uzair/Projects/Java/springboot/src/main/java/xml/course-details.xsd"));
+    public XsdSchema coursesSchema(){
+       return new SimpleXsdSchema(new ClassPathResource("course-details.xsd"));
     }
 
 }
