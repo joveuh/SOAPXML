@@ -35,11 +35,14 @@ public class CourseDetailsEndpointController {
      * Checking this thing out.
      * </pre>
      */
-    @ResponsePayload
     @PayloadRoot(namespace = "http://localhost:8090/courses", localPart = "GetCourseDetailsRequest")
+    @ResponsePayload
     public GetAllCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
         Course course = service.findById(request.getId());
-        
+        return extracted(course);
+    }
+
+    private GetAllCourseDetailsResponse extracted(Course course) {
         GetAllCourseDetailsResponse response = new GetAllCourseDetailsResponse();
         CourseDetails courseDetails = new CourseDetails();
         courseDetails.setId(8402);
