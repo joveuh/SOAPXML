@@ -39,10 +39,10 @@ public class CourseDetailsEndpointController {
     @ResponsePayload
     public GetAllCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
         Course course = service.findById(request.getId());
-        return extracted(course);
+        return mapper(course);
     }
 
-    private GetAllCourseDetailsResponse extracted(Course course) {
+    private GetAllCourseDetailsResponse mapper(Course course) {
         GetAllCourseDetailsResponse response = new GetAllCourseDetailsResponse();
         CourseDetails courseDetails = new CourseDetails();
         courseDetails.setId(8402);
