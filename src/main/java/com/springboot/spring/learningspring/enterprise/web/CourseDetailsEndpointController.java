@@ -8,6 +8,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.springboot.spring.learningspring.enterprise.data.CourseDetailsService;
+import com.springboot.spring.learningspring.enterprise.data.courses.Course;
 
 import localhost._8090.courses.CourseDetails;
 import localhost._8090.courses.GetAllCourseDetailsResponse;
@@ -37,11 +38,15 @@ public class CourseDetailsEndpointController {
     @ResponsePayload
     @PayloadRoot(namespace = "http://localhost:8090/courses", localPart = "GetCourseDetailsRequest")
     public GetAllCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
+        Course course = service.findById(request.getId());
+        
         GetAllCourseDetailsResponse response = new GetAllCourseDetailsResponse();
         CourseDetails courseDetails = new CourseDetails();
         courseDetails.setId(8402);
-        courseDetails.setDescription("Uzarr");
-        courseDetails.setName("big courses");
+        courseDetails.setDescription(course.getdescription());
+        courseDetails.setName(course.getName());
+        courseDetails.setId(course.getId());
+    
         response.setCourseDetails(courseDetails);
         return response;
     }
