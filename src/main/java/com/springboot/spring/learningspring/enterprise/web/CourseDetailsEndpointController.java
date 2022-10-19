@@ -10,9 +10,12 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.springboot.spring.learningspring.enterprise.data.CourseDetailsService;
+import com.springboot.spring.learningspring.enterprise.data.CourseDetailsService.Status;
 import com.springboot.spring.learningspring.enterprise.data.courses.Course;
 
 import localhost._8090.courses.CourseDetails;
+import localhost._8090.courses.DeleteCourseDetailsRequest;
+import localhost._8090.courses.DeleteCourseDetailsResponse;
 import localhost._8090.courses.GetAllCourseDetailsRequest;
 import localhost._8090.courses.GetAllCourseDetailsResponse;
 import localhost._8090.courses.GetCourseDetailsResponse;
@@ -67,6 +70,22 @@ public class CourseDetailsEndpointController {
             response.getCourseDetails().add(mapCourse);
         }
         return response;
+    }
+
+
+    @PayloadRoot(namespace = "http://localhost:8090/courses", localPart = "DeleteCourseDetailsRequest")
+    @ResponsePayload
+    public DeleteCourseDetailsResponse deleteCourseDetailsRequest(@RequestPayload DeleteCourseDetailsRequest request) {
+        Status status = service.deleteById(request.getId());
+        DeleteCourseDetailsResponse response = new DeleteCourseDetailsResponse();
+        response.setStatus(mapStatusFromEnumtoDeleteCourseDetailsResponseXSDJavaClass(status));
+        return response;
+    }
+
+
+    private localhost._8090.courses.Status mapStatusFromEnumtoDeleteCourseDetailsResponseXSDJavaClass(Status status) {
+        if (status == Status.FAILURE) return localhost._8090.courses.Status.FAILURE;
+        return localhost._8090.courses.Status.SUCCESS;
     }
 
 

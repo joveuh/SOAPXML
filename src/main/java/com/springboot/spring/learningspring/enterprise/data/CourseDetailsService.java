@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import com.springboot.spring.learningspring.enterprise.data.courses.Course;
+import com.springboot.spring.learningspring.enterprise.web.CourseDetailsEndpointController;
 
 @Component
 @ComponentScan("com.springboot.spring.learningspring.enterprise.data.courses")
@@ -17,6 +18,10 @@ public class CourseDetailsService {
     // course findById(int id)
     // List<Course> findAll()
     // Course deleteById(int id)
+
+    public enum Status {
+        SUCCESS, FAILURE
+    }
 
     @Autowired
     private static List<Course> courses = new ArrayList<>();
@@ -43,16 +48,16 @@ public class CourseDetailsService {
         return courses;
     }
 
-    public int deleteById(int id) {
+    public Status deleteById(int id) {
         // Using an interator to avoid concurrentModificationException
         Iterator<Course> it = courses.iterator();
         while (it.hasNext()) {
             Course c = it.next();
             if (c.getId() == id) {
                 courses.remove(c);
-                return 1;
+                return Status.SUCCESS;
             }
         }
-        return 0;
+        return Status.FAILURE;
     }
 }
