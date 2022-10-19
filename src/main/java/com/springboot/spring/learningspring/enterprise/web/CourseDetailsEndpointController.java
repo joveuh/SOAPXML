@@ -1,5 +1,7 @@
 package com.springboot.spring.learningspring.enterprise.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +13,9 @@ import com.springboot.spring.learningspring.enterprise.data.CourseDetailsService
 import com.springboot.spring.learningspring.enterprise.data.courses.Course;
 
 import localhost._8090.courses.CourseDetails;
+import localhost._8090.courses.GetAllCourseDetailsRequest;
 import localhost._8090.courses.GetAllCourseDetailsResponse;
+import localhost._8090.courses.GetCourseDetailsResponse;
 import localhost._8090.courses.GetCourseDetailsRequest;
 
 // You will keep running into this sort of error message until you use the ComponentScan annotation "The declared package "com.springboot.spring.learningspring.enterprise.web" does not match the expected package "com.springboot.spring.learningspring.enterprise.data.courses"
@@ -29,7 +33,7 @@ public class CourseDetailsEndpointController {
 
     /**
      * <pre>
-     * @param request
+     * &#64;param request
      * @return response
      * 
      * Checking this thing out.
@@ -37,21 +41,41 @@ public class CourseDetailsEndpointController {
      */
     @PayloadRoot(namespace = "http://localhost:8090/courses", localPart = "GetCourseDetailsRequest")
     @ResponsePayload
-    public GetAllCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
+    public GetCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
         Course course = service.findById(request.getId());
-        return mapper(course);
+        return mapCourseDetails(course);
     }
 
-    private GetAllCourseDetailsResponse mapper(Course course) {
+
+    private GetCourseDetailsResponse mapCourseDetails(Course course) {
+        GetCourseDetailsResponse response = new GetCourseDetailsResponse();
+        response.setCourseDetails(mapCourse(course));
+        return response;
+    }
+
+    @PayloadRoot(namespace = "http://localhost:8090/courses", localPart = "GetAllCourseDetailsRequest")
+    @ResponsePayload
+    public GetAllCourseDetailsResponse processAllCourseDetailsRequest(@RequestPayload GetAllCourseDetailsRequest request) {
+        List<Course> courses = service.findAll();
+        return mapAllCourseDetails(courses);
+    }
+
+    private GetAllCourseDetailsResponse mapAllCourseDetails(List<Course> courses) {
         GetAllCourseDetailsResponse response = new GetAllCourseDetailsResponse();
+        for (Course c: courses){
+            CourseDetails mapCourse = mapCourse(c);
+            response.getCourseDetails().add(mapCourse);
+        }
+        return response;
+    }
+
+
+    private CourseDetails mapCourse(Course course) {
         CourseDetails courseDetails = new CourseDetails();
-        courseDetails.setId(8402);
         courseDetails.setDescription(course.getdescription());
         courseDetails.setName(course.getName());
         courseDetails.setId(course.getId());
-    
-        response.setCourseDetails(courseDetails);
-        return response;
+        return courseDetails;
     }
 
 }

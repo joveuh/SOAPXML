@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<GetAllCourseDetailsResponse xmlns="http://localhost:8090/courses"
+<GetCourseDetailsResponse xmlns="http://localhost:8090/courses"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://localhost:8090/courses course-details.xsd">
 
@@ -10,4 +10,4 @@ xsi:schemaLocation="http://localhost:8090/courses course-details.xsd">
         <description>Sample description</description>
     </CourseDetails>
 
-</GetAllCourseDetailsResponse>
+</GetCourseDetailsResponse>

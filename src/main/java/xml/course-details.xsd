@@ -7,13 +7,32 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="GetAllCourseDetailsResponse">
+    <xs:element name="GetCourseDetailsResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="CourseDetails" type="tns:CourseDetails" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+
+
+    <xs:element name="GetAllCourseDetailsRequest">
+        <!-- Empty element because we don't need to provide any id number to GetAllCourses -->
+        <!-- We are going to put an empty complex type in here so that this generates a corrseponsing GetAllCourseDetailsRequest java class  -->
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GetAllCourseDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CourseDetails" type="tns:CourseDetails" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
     <xs:complexType name="CourseDetails">
         <xs:sequence>
             <xs:element name="id" type="xs:int" />
