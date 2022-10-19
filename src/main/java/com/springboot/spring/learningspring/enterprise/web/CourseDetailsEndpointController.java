@@ -46,6 +46,7 @@ public class CourseDetailsEndpointController {
     @ResponsePayload
     public GetCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
         Course course = service.findById(request.getId());
+        if (course == null) throw new RuntimeException("Invalid Course Id" + request.getId());
         return mapCourseDetails(course);
     }
 
