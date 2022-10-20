@@ -6,7 +6,7 @@
 //
 
 
-package localhost._8090.courses;
+package generated;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the localhost._8090.courses package. 
+ * generated in the generated package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -30,34 +30,26 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: localhost._8090.courses
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: generated
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link GetAllCourseDetailsResponse }
+     * Create an instance of {@link SecurityConfiguration }
      * 
      */
-    public GetAllCourseDetailsResponse createGetAllCourseDetailsResponse() {
-        return new GetAllCourseDetailsResponse();
+    public SecurityConfiguration createSecurityConfiguration() {
+        return new SecurityConfiguration();
     }
 
     /**
-     * Create an instance of {@link CourseDetails }
+     * Create an instance of {@link SecurityConfiguration.RequireUsernameToken }
      * 
      */
-    public CourseDetails createCourseDetails() {
-        return new CourseDetails();
-    }
-
-    /**
-     * Create an instance of {@link GetCourseDetailsRequest }
-     * 
-     */
-    public GetCourseDetailsRequest createGetCourseDetailsRequest() {
-        return new GetCourseDetailsRequest();
+    public SecurityConfiguration.RequireUsernameToken createSecurityConfigurationRequireUsernameToken() {
+        return new SecurityConfiguration.RequireUsernameToken();
     }
 
 }
