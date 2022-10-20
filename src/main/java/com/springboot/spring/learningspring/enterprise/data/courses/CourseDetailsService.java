@@ -1,4 +1,4 @@
-package com.springboot.spring.learningspring.enterprise.data;
+package com.springboot.spring.learningspring.enterprise.data.courses;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,8 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
-import com.springboot.spring.learningspring.enterprise.data.courses.Course;
-import com.springboot.spring.learningspring.enterprise.web.CourseDetailsEndpointController;
+
 
 @Component
 @ComponentScan("com.springboot.spring.learningspring.enterprise.data.courses")
